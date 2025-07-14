@@ -18,7 +18,7 @@
     <body class="bg-dark">
         <div class="d-flex justify-content-center align-items-center mt-4 text-center">
             <div class="card p-4 " style="width: 30rem;">
-                <h1>coucou</h1>
+                <h1>Hello</h1>
             </div>
         </div>
     </body>
