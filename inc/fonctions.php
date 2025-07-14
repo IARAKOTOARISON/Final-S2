@@ -209,9 +209,9 @@ function historique($id) {
 
 
 
-//le get date dispo ataovy amle liste partie gauche 
+//le get date dispo ataovy amle liste partie gauche liste
 
-function get_datedispo($id){
+function get_date_dispo($id){
     $sql="select * from fi_dispo_dans where id_objet = '$id' ;" ;
     $result = mysqli_query(dbconnect(), $sql);
 
@@ -227,6 +227,31 @@ function get_datedispo($id){
     return $tab;
 
 }
+
+
+function mesemprunts($id){
+    $sql = "select * from fi_emprunt where id_membre = $id";
+    $result = mysqli_query(dbconnect(), $sql);
+
+    $tab = [];
+
+    if ($result) {
+        while ($valiny = mysqli_fetch_assoc($result)) {
+            $tab[] = $valiny;
+        }
+        mysqli_free_result($result);
+    }
+
+    return $tab;
+}
+
+// function get_idCo_idobj($id){
+//     $sql = "select * from fi_emprunt where id_membre = $id";
+
+
+
+// }
+
 
 
 ?>

@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/modele1.php?upload">Ajout Objet</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/modele2.php?emp">mes emprunts</a>
+                </li>
             </ul>
         </div>
     </div>

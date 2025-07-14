@@ -22,7 +22,7 @@ foreach ($liste as $l) {?>
                         <a href="modele2.php?idobj=<?=$l['id_objet']?>"
                             class="list-group-item list-group-item-action"><?=$l['nom_objet']?>
 
-                            <?php $imm = get_image($l['id_objet']);
+                            <?php $imm = get_image($l['id_objet']);   //ito argument
     if ($imm > 0) {?>
                             <img src="../inc/uploads/<?=$imm['nom_image']?>" style="width:100px" alt="image de l obj"
                                 srcset="">
@@ -30,11 +30,15 @@ foreach ($liste as $l) {?>
                             <img src="../inc/uploads/logo.png" style="width:100px" alt="image de l obj" srcset="">
                             <?php }?>
 
+
+                            <?php $d = get_date_dispo($l['id_objet'])?>  
+                                 <p>dispo le <?php $d['date_disponibilite'] ?></p>
+
                         </a>
 
                         <form action="../inc/traitement_emprunt.php" method="post">
                             <input type="hidden" name="id_obj" value="$l['id_objet']" >
-                            
+
                         <p>Duree en jour : <input class=inpute type="text" name="duree"></p>
                         <input class=boutonValider type="submit" value="Emprunter">
 

@@ -14,6 +14,7 @@ if ($nb_ligne != 0) {
     foreach ($idCo as $id) {
         echo $id['id_membre'];
     }
+
     $_SESSION['idCo'] = $id['id_membre'];
 
     header('location:../pages/modele2.php');

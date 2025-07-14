@@ -20,7 +20,9 @@
             if (isset($_GET['idobj'])) {
                 $id = $_GET['idobj'];
                 include('../inc/objet.php') ;
-            }else{
+            }if (isset($_GET['emp'])) {
+                include('../inc/emprunts.php');
+            }            else{
                 include('../inc/liste.php') ;
             }
         

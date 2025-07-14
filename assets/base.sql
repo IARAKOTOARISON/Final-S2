@@ -211,3 +211,7 @@ create table fi_dispo_dans(
     duree int ,
     date_disponibilite Date 
 );
+
+
+---------------------
+
