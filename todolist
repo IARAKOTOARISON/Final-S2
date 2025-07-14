@@ -1,0 +1,10 @@
+                    VERSION 1
+
+-index.php
+-inc
+    -connexion.php
+    -fonctions.php
+    -traitement.php
+-pages
+    -modele
+-
