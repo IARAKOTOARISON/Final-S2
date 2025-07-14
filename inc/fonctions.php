@@ -137,7 +137,7 @@ function historique($id) {
             FROM fi_emprunt 
             WHERE id_objet = $id";
 
-    echo $sql;
+    //echo $sql;
 
     $result = mysqli_query(dbconnect(), $sql);
     $tab = [];
