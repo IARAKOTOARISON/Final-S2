@@ -3,18 +3,23 @@ $obj= get_list_obj_id( $id);
 $nom_cat = get_nom_categorie($id);
 ?>
 
-
-
 <body>
-    <h1><?= $id ?></h1>
-    <?php 
+    <div class="row m-4">
+        <div class="col-4">
+            <?php 
         foreach ($obj as $o) { ?>
-    <p><?= $o['nom_objet'] ?></p>
+            <h1 class="text-primary"><?= $o['nom_objet'] ?></h1>
 
-    <?php  }    ?>
-    <?php 
+            <?php  }    ?>
+            <?php 
         foreach ($nom_cat as $n) { ?>
-    <p><?= $n['nom_categorie'] ?></p>
+            <p> <span class="fw-bold">Categorie: </span> <?= $n['nom_categorie'] ?></p>
 
-    <?php  }    ?>
+            <?php  }    ?>
+        </div>
+        <div class="col-8">
+            <img src="" alt="la photo" srcset="">
+        </div>
+    </div>
+
 </body>
