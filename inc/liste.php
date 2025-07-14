@@ -32,7 +32,7 @@
 
                     <div class="row">
                         <div class="col-6 col-md-4 ">
-                            <a href="modele2.php?idobj=<?=  $l['id_objet'] ?>" class="list-group-item list-group-item-action">
+                            <a href="modele2.php?idobj=<?=  $l2['id_objet'] ?>" class="list-group-item list-group-item-action">
                                 <?=$l2['nom_objet']?>
                             </a>
                         </div>

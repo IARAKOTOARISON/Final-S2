@@ -24,12 +24,18 @@ $hist = historique($id);
         </div>
     </div>
     <?php 
+    if (!empty($hist)) {
         foreach ($hist as $h) { ?>
     <p><span class="fw-bold">Emprunte par : <?= $h['id_membre'] ?></span></p>
     <p><span class="fw-bold">Date emprunt : <?= $h['date_emprunt'] ?></span></p>
     <p><span class="fw-bold">Date retour : <?= $h['date_retour'] ?></span></p>
 
-    <?php  }    ?>
+    <?php  }  } else { ?>
+        <p>il n'y a pas d'historique</p>
+   <?php }   ?>
+
+
+
 
 
 </body>

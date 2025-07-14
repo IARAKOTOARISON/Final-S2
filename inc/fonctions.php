@@ -132,8 +132,7 @@ function get_nom_categorie($idobj){
     return $tab;
 }
 
-
-function historique($id){
+function historique($id) {
     $sql = "SELECT id_emprunt, id_membre, date_emprunt, date_retour 
             FROM fi_emprunt 
             WHERE id_objet = $id";
@@ -150,7 +149,14 @@ function historique($id){
         mysqli_free_result($result);
     }
 
+    $count = count($tab);
+
+    if ($count === 0) {
+        //echo "pas d 'historique";
+    }
+
     return $tab;
 }
+
 
 ?>
