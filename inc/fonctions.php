@@ -205,6 +205,30 @@ function historique($id) {
 }
 
 
+
+
+
+
+//le get date dispo ataovy amle liste partie gauche 
+
+function get_datedispo($id){
+    $sql="select * from fi_dispo_dans where id_objet = '$id' ;" ;
+    $result = mysqli_query(dbconnect(), $sql);
+
+    $tab = [];
+
+    if ($result) {
+        while ($valiny = mysqli_fetch_assoc($result)) {
+            $tab[] = $valiny;
+        }
+        mysqli_free_result($result);
+    }
+
+    return $tab;
+
+}
+
+
 ?>
 
 

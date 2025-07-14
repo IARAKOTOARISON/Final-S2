@@ -202,3 +202,12 @@ SELECT fi_objet.id_categorie , nom_categorie, id_objet, nom_objet
 FROM fi_objet
 join fi_categorie_objet
 on fi_objet.id_categorie = fi_categorie_objet.id_categorie;
+
+
+
+---------
+create table fi_dispo_dans(
+    id_objet int ,
+    duree int ,
+    date_disponibilite Date 
+);
