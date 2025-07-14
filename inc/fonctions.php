@@ -95,5 +95,42 @@ function get_list_obj_dispo(){
     return $tab;
 }
 
+function get_list_obj_id($id){
+    $sql = "select * from v_obj where id_objet = $id ;";
+    //echo $sql;
+
+    $result = mysqli_query(dbconnect(), $sql);
+
+    $tab = [];
+
+    if ($result) {
+        while ($valiny = mysqli_fetch_assoc($result)) {
+            $tab[] = $valiny;
+        }
+        mysqli_free_result($result);
+    }
+
+    return $tab;
+}
+
+
+function get_nom_categorie($idobj){
+    $sql = "select * from v_obj_par_categorie where id_objet = $idobj ;";
+    //echo $sql;
+
+    $result = mysqli_query(dbconnect(), $sql);
+
+    $tab = [];
+
+    if ($result) {
+        while ($valiny = mysqli_fetch_assoc($result)) {
+            $tab[] = $valiny;
+        }
+        mysqli_free_result($result);
+    }
+
+    return $tab;
+}
+
 
 ?>

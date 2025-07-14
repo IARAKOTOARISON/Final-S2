@@ -181,3 +181,10 @@ CREATE OR REPLACE VIEW v_obj_disponibles AS
 SELECT *
 FROM fi_objet
 WHERE id_objet NOT IN (SELECT id_objet FROM v_emp_obj);
+
+--objet avec nom de categorie
+CREATE OR REPLACE VIEW v_obj_par_categorie AS
+SELECT fi_objet.id_categorie , nom_categorie, id_objet, nom_objet
+FROM fi_objet
+join fi_categorie_objet
+on fi_objet.id_categorie = fi_categorie_objet.id_categorie;

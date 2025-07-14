@@ -1,5 +1,6 @@
 <?php
     include('../inc/fonctions.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,16 @@
     ?>
 
     <body class="">
-        <?php include('../inc/liste.php') ?>
+        <?php
+            if (isset($_GET['idobj'])) {
+                $id = $_GET['idobj'];
+                include('../inc/objet.php') ;
+            }else{
+                include('../inc/liste.php') ;
+            }
+        
+        ?>
+        <?php ?>
     </body>
 
     <?php 

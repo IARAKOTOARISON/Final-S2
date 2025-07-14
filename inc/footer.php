@@ -1,4 +1,4 @@
-<div class="footer text-center text-light mt-auto py-3">
+<div class="footer text-center mt-auto py-3">
     <hr>
     <div class="fw-bold text-primary ">
         <h4>ABOUT US</h4>
@@ -13,5 +13,4 @@
         <div class="col-6">ETU 004231</div>
     </div>
     <hr>
-    <i class="bi bi-facebook"></i>
 </div>
