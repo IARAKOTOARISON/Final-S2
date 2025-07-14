@@ -1,21 +1,22 @@
 <?php
-include("include/connexion.php");
+include("fonctions.php");
+
 $nom=$_POST['nom'];
 $dtn=$_POST['dtn'];
 $email=$_POST['email'];
 $mdp=$_POST['mdp'];
+$genre = $_POST['genre'];
+$ville = $_POST['ville'];
+$image = 'null';
 
-if ($nom=="" || $email=="" || $mdp=="") {
-    header("Location: index.php?error=1");
+if ($nom=="" || $email=="" || $mdp=="" || $ville=="" || $dtn=="" || $genre =="") {
+    //header("Location: ../pages/modele1.php");
+    echo "misy tsy ampy";
     exit();
 }
 
-$sql="INSERT INTO Membres (Nom,DateNaissance,Email,MotDePasse) VALUES ('%s' ,'%s' ,'%s' ,'%s')";
-$sql= sprintf($sql, $nom, $dtn, $email, $mdp);
-$resultat=mysqli_query($bdd,$sql);
+insertmembre($nom, $dtn, $genre, $email, $ville, $mdp, $image);
 
-if($resultat){
-    header("Location: login.php");
-}
+
 
 ?>
