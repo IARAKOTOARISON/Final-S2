@@ -2,7 +2,7 @@
 <body>
     <h1>Login</h1>
     <div class="log">
-        <form action="traitementlogin.php" method="post">
+        <form action="../inc/traitementlogin.php" method="post">
             <p>Email: <input class=inputelogin type="email" name="emailogin"></p>
             <p>Mot de Passe: <input class=inputelogin type="password" name="mdplogin"></p>
             

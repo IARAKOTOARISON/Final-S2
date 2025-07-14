@@ -1,5 +1,5 @@
-create database final;
-use final;
+-- create database final;
+-- use final;
 create table fi_membre(
     id_membre int PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
@@ -115,12 +115,69 @@ INSERT INTO fi_objet (nom_objet, id_categorie, id_membre) VALUES
 -- Insertion des emprunts
 INSERT INTO fi_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
 (1, 2, '2023-10-01', '2023-10-15'), -- Alice's creme hydratante
-(2, 3, '2023-10-02', '2023-10-16'), -- Alice's rouge a levres
-(3, 4, '2023-10-03', '2023-10-17'), -- Alice's masque facial
-(4, 1, '2023-10-04', '2023-10-18'), -- Alice's seche-cheveux
+(20, 3, '2023-10-02', '2023-10-16'), -- Alice's rouge a levres
+(30, 4, '2023-10-03', '2023-10-17'), -- Alice's masque facial
+(40, 1, '2023-10-04', '2023-10-18'), -- Alice's seche-cheveux
 (5, 2, '2023-10-05', '2023-10-19'), -- Alice's vernis a ongles
 (6, 3, '2023-10-06', '2023-10-20'), -- Bob's marteau
-(7, 4, '2023-10-07', '2023-10-21'), -- Bob's tournevis
+(17, 4, '2023-10-07', '2023-10-21'), -- Bob's tournevis
 (8, 1, '2023-10-08', '2023-10-22'), -- Claire's cle a bougie
-(9, 2, '2023-10-09', '2023-10-23'), -- Claire's cle a molette
+(39, 2, '2023-10-09', '2023-10-23'), -- Claire's cle a molette
 (10, 3, '2023-10-10', '2023-10-24'); -- David's casserole
+
+
+INSERT INTO fi_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
+(1, 2, '2025-01-01', '2026-01-15'), -- Alice's creme hydratante
+(20, 3, '2025-01-02', '2026-01-16'), -- Alice's rouge a levres
+(30, 4, '2025-01-03', '2026-01-17'), -- Alice's masque facial
+(40, 1, '2025-01-04', '2026-01-18'), -- Alice's seche-cheveux
+(5, 2, '2025-01-05', '2026-01-19'), -- Alice's vernis a ongles
+(6, 3, '2025-01-06', '2026-01-20'), -- Bob's marteau
+(17, 4, '2025-01-07', '2026-01-21'), -- Bob's tournevis
+(8, 1, '2025-01-08', '2026-01-22'), -- Claire's cle a bougie
+(39, 2, '2025-01-09', '2026-01-23'), -- Claire's cle a molette
+(01, 3, '2025-01-01', '2026-01-24'); -- David's casserole
+
+
+
+CREATE VIEW v_est AS
+SELECT 
+    e.emp_no AS e_emp_no,  
+    s.salary AS es_salary, 
+    s.from_date AS es_from_date, 
+    s.to_date AS es_to_date,
+    t.title AS et_title, 
+    t.from_date AS et_from_date, 
+    t.to_date AS et_to_date
+FROM employees e
+JOIN salaries s ON e.emp_no = s.emp_no 
+JOIN titles t ON e.emp_no = t.emp_no;
+
+
+--objet misy emprunt en cours 
+create or replace view v_emp_obj  AS
+SELECT 
+    fi_emprunt.id_objet ,
+    fi_objet.nom_objet,
+    fi_objet.id_categorie,
+    fi_objet.id_membre,
+    fi_emprunt.date_emprunt,
+    fi_emprunt.date_retour
+FROM 
+    fi_emprunt 
+JOIN 
+    fi_objet ON fi_emprunt.id_objet = fi_objet.id_objet 
+where fi_emprunt.date_emprunt <= CURDATE() and fi_emprunt.date_retour >= CURDATE();
+
+
+--objet sy ny anarany
+create or replace view v_obj  AS
+SELECT *
+FROM fi_objet ;
+
+
+--objet sans emprunt 
+CREATE OR REPLACE VIEW v_obj_disponibles AS
+SELECT *
+FROM fi_objet
+WHERE id_objet NOT IN (SELECT id_objet FROM v_emp_obj);

@@ -1,20 +1,23 @@
 <?php
 session_start();
-include("include/connexion.php");
-$loginemail=$_POST['emailogin'];
-$loginmdp=$_POST['mdplogin'];
-$sqlogin="SELECT * FROM Membres WHERE Email='%s' AND MotDePasse='%s'";
-$sqlogin=sprintf($sqlogin, $loginemail, $loginmdp);
-$resultat=mysqli_query($bdd, $sqlogin);
-$nb_ligne=mysqli_num_rows($resultat);
+include "fonctions.php";
+$loginemail = $_POST['emailogin'];
+$loginmdp = $_POST['mdplogin'];
 
+$nb_ligne = mailExiste($loginemail, $loginmdp);
 
-if ($nb_ligne!=0) {
-    $donneelogin=mysqli_fetch_assoc($resultat);
-    $_SESSION['idMembre']=$donneelogin['idMembre'];
-    header('location:accueil.php');
-}elseif ($nb_ligne==0) {
-    header('location:login.php?error=1');
+if ($nb_ligne != 0) {
+    echo "misy";
+
+    $idCo = get_idCo($email, $mdp);
+
+    foreach ($idCo as $id) {
+        echo $id['id_membre'];
+    }
+    $_SESSION['idCo'] = $id['id_membre'];
+
+    header('location:../pages/modele2.php');
+} elseif ($nb_ligne == 0) {
+    echo "tsy misy";
+    header('location:../pages/modele1.php?login');
 }
-
-?>

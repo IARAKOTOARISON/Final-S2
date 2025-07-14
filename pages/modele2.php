@@ -15,8 +15,8 @@
     include('../inc/navbar.php');
     ?>
 
-    <body class="bg-dark">
-        
+    <body class="">
+        <?php include('../inc/liste.php') ?>
     </body>
 
     <?php 
