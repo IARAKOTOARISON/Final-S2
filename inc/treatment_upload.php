@@ -1,10 +1,10 @@
 <?php
 session_start();
-require('../inc/fonction.php');
+require('fonctions.php');
 
 $uploadDir = __DIR__ . '/uploads/';
 $maxSize = 25 * 1024 * 1024; // 2 Mo
-$allowedMimeTypes = ['image/png', 'video/mp4'];
+$allowedMimeTypes = ['image/png','image/jpeg','image/jpg'];
 
 // // Vérifie si un fichier est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -42,16 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $newName;
 
 
-        $id = $_SESSION['idco'];
-
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $name = $newName;
-        $code_photo = 0;
-        $code_video = 1;
+        $id = $_SESSION['idCo'];
+        $name_image = $newName;
+        $name = $_POST['nom_obj'];
+        $idCat = $_POST['cat_obj'] ;
 
 
-        echo $id, $title, $description, $name;
+        echo $id, $name, $idCat;
 
         // Déplace le fichier
         if (move_uploaded_file($file['tmp_name'], $uploadDir . $newName)) {
@@ -59,14 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (strpos($mime, 'image/') === 0) {
 
 
-                insertPublications($id,$title,$description,$name,$code_photo);
+                insert_obj($name,$idCat,$id);
+
+                $idfarany = get_id_obj_farany();
+                foreach($idfarany as $i){
+
+                    echo $i['id_objet'] ;
+
+                    insert_im($i['id_objet'],$name_image);
+
+                }
 
                 echo "Fichier image détecté : " . $newName;
-            } elseif (strpos($mime, 'video/') === 0) {
-
-                insertPublications($id,$title,$description,$name,$code_video);
-                echo "Fichier vidéo détecté : " . $newName;
-            }
+            } 
 
             header('location:../pages/modele2.php') ;
 

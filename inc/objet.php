@@ -16,7 +16,12 @@ $hist = historique($id);
                 <?php } ?>
             </div>
             <div class="col-md-8">
-                <img src="" alt="la photo" class="img-fluid rounded">
+                <?php $im = get_image($id);
+                if ($im != 0) { ?>
+                    <img src="../inc/uploads/<?= $im['nom_image'] ?>" style="width:100px" alt="image de l obj" srcset="">
+                <?php } else { ?>
+                    <img src="../inc/uploads/logo.png" style="width:100px" alt="image de l obj" srcset="">
+                <?php } ?>
             </div>
         </div>
 
@@ -40,4 +45,5 @@ $hist = historique($id);
         </div>
     </div>
 </body>
+
 </html>

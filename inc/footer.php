@@ -13,4 +13,5 @@
         <div class="col-6">ETU 004231</div>
     </div>
     <hr>
+    <i class="bi bi-facebook"></i>
 </div>

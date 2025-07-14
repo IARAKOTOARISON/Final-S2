@@ -1,5 +1,5 @@
--- create database final;
--- use final;
+create database final;
+use final;
 create table fi_membre(
     id_membre int PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50),
@@ -181,6 +181,20 @@ CREATE OR REPLACE VIEW v_obj_disponibles AS
 SELECT *
 FROM fi_objet
 WHERE id_objet NOT IN (SELECT id_objet FROM v_emp_obj);
+
+
+create table fi_im_objet(
+    id_im_objet int PRIMARY KEY AUTO_INCREMENT ,
+    nom_image VARCHAR(50) ,
+    id_objet int 
+);
+
+
+create view v_group_meme_obj as 
+select * from fi_objet group by nom_objet ;
+
+
+
 
 --objet avec nom de categorie
 CREATE OR REPLACE VIEW v_obj_par_categorie AS

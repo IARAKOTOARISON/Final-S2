@@ -1,6 +1,5 @@
 <?php
     include('../inc/fonctions.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@
     ?>
 
     <body class="">
-        <?php
+    <?php
             if (isset($_GET['idobj'])) {
                 $id = $_GET['idobj'];
                 include('../inc/objet.php') ;

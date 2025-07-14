@@ -22,6 +22,9 @@
             if(isset($_GET['login'])){
                 include('../inc/login.php');
             }
+            if(isset($_GET['upload'])){
+                include('../inc/upload.php');
+            }
             else{
                 include('../inc/inscription.php');
             }
