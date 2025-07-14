@@ -133,4 +133,24 @@ function get_nom_categorie($idobj){
 }
 
 
+function historique($id){
+    $sql = "SELECT id_emprunt, id_membre, date_emprunt, date_retour 
+            FROM fi_emprunt 
+            WHERE id_objet = $id";
+
+    echo $sql;
+
+    $result = mysqli_query(dbconnect(), $sql);
+    $tab = [];
+
+    if ($result) {
+        while ($valiny = mysqli_fetch_assoc($result)) {
+            $tab[] = $valiny;
+        }
+        mysqli_free_result($result);
+    }
+
+    return $tab;
+}
+
 ?>
